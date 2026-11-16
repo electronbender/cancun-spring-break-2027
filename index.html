@@ -1,0 +1,993 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cancún Spring Break 2027</title>
+<meta name="description" content="Cancún Spring Break 2027 — all-inclusive hotel packages, party passes, excursions and a trip planner with one-tap prompts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sea:#00b4c6; --sea-deep:#006d80; --sun:#ffb020; --coral:#ff5a5f; --lime:#c6f432;
+    --ink:#0d1b2a; --ink-2:#3b4a5a; --sand:#fff8ec; --card:#ffffff; --line:#eadfcb;
+    --radius:18px; --shadow:0 12px 30px rgba(13,27,42,.12);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--sand);line-height:1.55}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+  h1,h2,h3{line-height:1.1;margin:0 0 .4em}
+  h2{font-family:Anton,Impact,sans-serif;font-weight:400;font-size:clamp(2rem,4.5vw,3.2rem);letter-spacing:.5px;text-transform:uppercase}
+  .eyebrow{font-weight:800;letter-spacing:.18em;text-transform:uppercase;font-size:.78rem;color:var(--coral)}
+  section{padding:84px 0}
+  .lead{color:var(--ink-2);max-width:680px;font-size:1.08rem}
+
+  /* Top bar */
+  .promo{background:var(--ink);color:#fff;text-align:center;font-size:.88rem;padding:8px 16px}
+  .promo b{color:var(--lime)}
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(255,248,236,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
+  .logo{font-family:Anton,sans-serif;font-size:1.6rem;text-decoration:none;letter-spacing:.5px}
+  .logo span{color:var(--coral)}
+  .nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;font-weight:600;font-size:.95rem}
+  .nav ul a{text-decoration:none}
+  .nav ul a:hover{color:var(--sea-deep)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:13px 24px;font:700 1rem Inter,sans-serif;cursor:pointer;text-decoration:none;transition:transform .15s,box-shadow .15s,background .15s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:var(--coral);color:#fff;box-shadow:0 8px 20px rgba(255,90,95,.35)}
+  .btn-dark{background:var(--ink);color:#fff}
+  .btn-ghost{background:#fff;color:var(--ink);border:2px solid var(--ink)}
+  .btn-sm{padding:9px 16px;font-size:.88rem}
+  .menu-toggle{display:none;background:none;border:0;font-size:1.6rem;cursor:pointer}
+
+  /* Hero */
+  .hero{position:relative;color:#fff;padding:110px 0 120px;overflow:hidden;
+    background:
+      linear-gradient(180deg,rgba(0,40,60,.15),rgba(0,30,50,.65)),
+      url("https://images.unsplash.com/photo-1552074284-5e88ef1aef18?auto=format&fit=crop&w=2000&q=70") center/cover,
+      linear-gradient(135deg,var(--sea),var(--sea-deep));}
+  .hero h1{font-family:Anton,sans-serif;font-weight:400;font-size:clamp(3.2rem,10vw,7.5rem);text-transform:uppercase;letter-spacing:1px;text-shadow:0 6px 30px rgba(0,0,0,.35)}
+  .hero h1 em{font-style:normal;color:var(--lime)}
+  .hero p{font-size:1.2rem;max-width:620px;text-shadow:0 2px 10px rgba(0,0,0,.4)}
+  .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin:26px 0 34px}
+  .countdown{display:flex;gap:12px;flex-wrap:wrap}
+  .countdown div{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(6px);border-radius:14px;padding:12px 16px;min-width:84px;text-align:center}
+  .countdown b{display:block;font-family:Anton,sans-serif;font-size:2rem;font-weight:400}
+  .countdown small{text-transform:uppercase;letter-spacing:.12em;font-size:.7rem}
+  .hero-chips{margin-top:34px}
+  .hero-chips p{font-size:.9rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;margin:0 0 10px}
+
+  /* Prompt chips */
+  .chips{display:flex;flex-wrap:wrap;gap:10px}
+  .chip{border:2px solid var(--ink);background:#fff;color:var(--ink);border-radius:999px;padding:9px 16px;font:600 .92rem Inter,sans-serif;cursor:pointer;transition:all .15s;text-align:left}
+  .chip:hover,.chip.active{background:var(--ink);color:#fff}
+  .hero .chip{border-color:#fff;background:rgba(255,255,255,.12);color:#fff;backdrop-filter:blur(4px)}
+  .hero .chip:hover{background:#fff;color:var(--ink)}
+
+  /* Stats strip */
+  .stats{background:var(--ink);color:#fff;padding:30px 0}
+  .stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+  .stats b{font-family:Anton,sans-serif;font-weight:400;font-size:2.2rem;color:var(--sun);display:block}
+  .stats span{font-size:.9rem;opacity:.85}
+
+  /* Dates */
+  .weeks{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:30px}
+  .week{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px;position:relative}
+  .week h3{font-size:1.1rem}
+  .week p{margin:0;color:var(--ink-2);font-size:.92rem}
+  .tag{display:inline-block;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:4px 9px;border-radius:999px;margin-bottom:10px}
+  .tag.hot{background:var(--coral);color:#fff}
+  .tag.peak{background:var(--sun);color:var(--ink)}
+  .tag.chill{background:#d9f6f9;color:var(--sea-deep)}
+
+  /* Hotels */
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin:26px 0}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:22px}
+  .hotel{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);display:flex;flex-direction:column;position:relative}
+  .hotel:has(.op-menu.open){z-index:20}
+  .hotel .img{border-radius:var(--radius) var(--radius) 0 0;height:190px;background-size:cover;background-position:center;position:relative}
+  .hotel .img .tag{position:absolute;top:14px;left:14px}
+  .hotel .body{padding:20px;display:flex;flex-direction:column;flex:1}
+  .hotel h3{font-size:1.25rem}
+  .vibe{font-size:.85rem;color:var(--sea-deep);font-weight:700;margin-bottom:8px}
+  .hotel ul{padding-left:18px;margin:0 0 16px;color:var(--ink-2);font-size:.92rem}
+  .price{display:flex;align-items:flex-end;justify-content:space-between;margin-top:auto;padding-top:14px;border-top:1px dashed var(--line);gap:10px}
+  .price small{display:block;color:var(--ink-2);font-size:.78rem}
+  .price b{font-size:1.7rem;font-family:Anton,sans-serif;font-weight:400}
+
+  /* "Ask with" engine picker + prompt links */
+  .nav-right{display:flex;align-items:center;gap:12px}
+  .engine-pick{display:flex;align-items:center;gap:8px;font-size:.85rem;font-weight:600;color:var(--ink-2)}
+  .engine-pick select{width:auto;font:600 .88rem Inter,sans-serif;padding:7px 10px;border-radius:10px;border:1.5px solid var(--line);background:#fff;color:var(--ink)}
+  .ask-link{display:inline-block;margin-top:12px;font-size:.85rem;font-weight:700;color:var(--sea-deep);text-decoration:none}
+  .ask-link:hover{text-decoration:underline}
+  @media (max-width:420px){.engine-pick > span{display:none}}
+
+  /* Booking mode */
+  .book-mode{margin-top:26px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px}
+  .seg{display:inline-flex;background:#eef3f6;border-radius:999px;padding:4px;flex-wrap:wrap}
+  .seg button{border:0;background:none;border-radius:999px;padding:10px 18px;font:700 .92rem Inter,sans-serif;cursor:pointer;color:var(--ink-2)}
+  .seg button.on{background:var(--ink);color:#fff}
+  .op-pick{display:flex;align-items:center;gap:10px}
+  .op-pick label{margin:0}
+  .op-pick select{width:auto;padding:9px 12px}
+  .mode-note{flex-basis:100%;margin:0;font-size:.9rem;color:var(--ink-2)}
+  .card-actions{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+  .card-actions a{white-space:nowrap}
+
+  /* Party pass */
+  .party{background:linear-gradient(135deg,#1a0b2e,#3a0f4f 55%,#7a1655);color:#fff}
+  .party .lead{color:#e9d8ff}
+  .party .eyebrow{color:var(--lime)}
+  .events{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:34px 0}
+  .event{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:var(--radius);padding:22px}
+  .event .night{font-size:.75rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--sun)}
+  .event h3{margin:6px 0 6px;font-size:1.15rem}
+  .event p{margin:0;font-size:.92rem;color:#e6dcf2}
+  .pass-tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+  .tier{background:#fff;color:var(--ink);border-radius:var(--radius);padding:26px;display:flex;flex-direction:column}
+  .tier.best{outline:4px solid var(--lime);position:relative}
+  .tier.best::before{content:"Most popular";position:absolute;top:-14px;left:24px;background:var(--lime);color:var(--ink);font-size:.72rem;font-weight:800;padding:4px 10px;border-radius:999px;text-transform:uppercase;letter-spacing:.08em}
+  .tier b.amt{font-family:Anton,sans-serif;font-weight:400;font-size:2.4rem}
+  .tier ul{padding-left:18px;color:var(--ink-2);font-size:.93rem;flex:1}
+
+  /* Hotel card booking row */
+  .sold-by{font-size:.82rem;color:var(--ink-2);background:#f3f8fa;border-radius:10px;padding:8px 10px;margin-bottom:4px}
+  .book-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .book-row > *{flex:1 1 180px}
+  .book-row .btn{width:100%}
+  .no-ops{display:flex;align-items:center;justify-content:center;border:1.5px dashed #cfd8e0;border-radius:999px;font-size:.8rem;font-weight:600;color:var(--ink-2);padding:8px 12px;text-align:center}
+  .op-menu{position:relative}
+  .op-toggle .caret{display:inline-block;transition:transform .2s}
+  .op-menu.open .op-toggle .caret{transform:rotate(180deg)}
+  .op-list{display:none;position:absolute;left:0;right:0;top:calc(100% + 6px);min-width:240px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:6px;z-index:30}
+  .op-menu.open .op-list{display:block}
+  .op-head{font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);padding:6px 10px}
+  .op-list a{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px;border-radius:10px;text-decoration:none;font-weight:700;font-size:.92rem}
+  .op-list a:hover,.op-list a:focus{background:#eef3f6;outline:none}
+  .op-list small{display:block;font-weight:500;font-size:.74rem;color:var(--ink-2)}
+  .op-list em{font-style:normal;color:var(--coral);font-size:.78rem}
+
+  /* Operator cards */
+  .op-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-top:26px}
+  .op{background:#fff;border:2px solid var(--line);border-radius:var(--radius);padding:20px;display:flex;flex-direction:column;gap:8px;cursor:pointer;transition:border-color .15s,box-shadow .15s;position:relative}
+  .op:hover{border-color:var(--sea)}
+  .op.sel{border-color:var(--coral);box-shadow:0 10px 26px rgba(255,90,95,.18)}
+  .op.sel::after{content:"✓ Selected";position:absolute;top:16px;right:16px;font-size:.75rem;font-weight:800;color:var(--coral)}
+  .op.dim{opacity:.8}
+  .op h3{font-size:1.2rem;margin:0}
+  .op .tag{margin:0;align-self:flex-start}
+  .op .from{font-weight:800;color:var(--sea-deep);font-size:.92rem}
+  .op p{margin:0;color:var(--ink-2);font-size:.92rem}
+  .op .dest{font-size:.82rem;color:var(--ink-2)}
+  .op .mini{display:flex;flex-wrap:wrap;gap:6px}
+  .op .mini span{font-size:.72rem;font-weight:700;background:#eef3f6;border-radius:999px;padding:3px 9px}
+  .op .op-actions{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin-top:auto;padding-top:10px}
+  .op .ask-link{margin-top:0}
+  /* Operator party-pass vendors */
+  .vendors{margin-top:46px}
+  .vendors .eyebrow{color:var(--lime)}
+  .vendors-title{font-family:Anton,sans-serif;font-weight:400;font-size:clamp(1.6rem,3.5vw,2.2rem);text-transform:uppercase;letter-spacing:.5px}
+  .vendor-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:22px}
+  .vendor{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;gap:10px}
+  .vendor-op{font-size:.75rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--sun)}
+  .vendor h4{margin:0;font-size:1.2rem}
+  .vendor-prices{display:flex;flex-wrap:wrap;gap:10px}
+  .vendor-prices div{background:#fff;color:var(--ink);border-radius:12px;padding:8px 14px}
+  .vendor-prices b{font-family:Anton,sans-serif;font-weight:400;font-size:1.6rem;display:block;line-height:1.1}
+  .vendor-prices small{font-size:.72rem;color:var(--ink-2)}
+  .vendor ul{margin:0;padding-left:18px;color:#e6dcf2;font-size:.92rem}
+  .vendor-venues{font-size:.85rem;color:#e6dcf2}
+  .vendor-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:auto;padding-top:6px}
+  .vendor .ask-link{color:var(--lime);margin-top:0}
+  .tier-actions{display:flex;flex-direction:column;gap:8px}
+  .btn-text{background:none;border:0;font:600 .88rem Inter,sans-serif;color:var(--sea-deep);cursor:pointer;text-decoration:underline;padding:4px}
+
+  /* Party Pass checkout dialog */
+  dialog#passDialog{border:0;border-radius:22px;padding:0;width:min(560px,calc(100% - 32px));box-shadow:0 30px 80px rgba(0,0,0,.35);color:var(--ink)}
+  dialog#passDialog::backdrop{background:rgba(13,27,42,.6);backdrop-filter:blur(3px)}
+  .pass-form{padding:26px;position:relative}
+  .pass-form .x{position:absolute;top:12px;right:14px;border:0;background:none;font-size:1.8rem;cursor:pointer;color:var(--ink-2);line-height:1}
+  .pass-opts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0 6px}
+  .pass-opts label{margin:0;cursor:pointer}
+  .pass-opts input{position:absolute;opacity:0}
+  .pass-opts span{display:block;border:2px solid var(--line);border-radius:14px;padding:10px;text-align:center;font-weight:600;font-size:.9rem}
+  .pass-opts b{display:block}
+  .pass-opts small{display:block;color:var(--ink-2);font-weight:500;font-size:.72rem}
+  .pass-opts input:checked + span{border-color:var(--coral);background:#fff1f1}
+  .pass-opts input:focus-visible + span{outline:3px solid rgba(0,180,198,.4)}
+  .qty{display:flex}
+  .qty button{width:44px;border:1.5px solid #cfd8e0;background:#eef3f6;font-size:1.2rem;cursor:pointer}
+  .qty button:first-child{border-radius:12px 0 0 12px}
+  .qty button:last-child{border-radius:0 12px 12px 0}
+  .qty input{border-radius:0;text-align:center;border-left:0;border-right:0}
+  .check{display:flex;gap:10px;align-items:flex-start;font-weight:500;font-size:.85rem;margin-top:14px}
+  .check input{width:auto;margin-top:3px}
+  .pass-total{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;margin-top:16px;padding-top:14px;border-top:1px dashed var(--line)}
+  .pass-total b{font-family:Anton,sans-serif;font-weight:400;font-size:2rem}
+  .pass-total small{flex-basis:100%;color:var(--ink-2)}
+  @media (max-width:480px){.pass-opts{grid-template-columns:1fr}}
+
+  /* Excursions */
+  .ex-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;margin-top:30px}
+  .ex{background:#fff;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
+  .ex .img{height:150px;background-size:cover;background-position:center}
+  .ex .body{padding:16px 18px 18px}
+  .ex h3{font-size:1.05rem}
+  .ex p{margin:0 0 12px;font-size:.9rem;color:var(--ink-2)}
+  .ex .row{display:flex;justify-content:space-between;align-items:center}
+  .ex .row b{color:var(--sea-deep)}
+
+  /* Steps */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:30px;counter-reset:s}
+  .step{background:#fff;border-radius:var(--radius);padding:24px;border:1px solid var(--line);counter-increment:s}
+  .step::before{content:counter(s);display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--sea);color:#fff;font-family:Anton,sans-serif;font-size:1.3rem;margin-bottom:12px}
+  .step p{margin:0;color:var(--ink-2);font-size:.93rem}
+
+  /* Planner */
+  .planner{background:linear-gradient(135deg,var(--sea),var(--sea-deep));color:#fff}
+  .planner .eyebrow{color:var(--lime)}
+  .planner .lead{color:#e2fbff}
+  .planner-box{display:grid;grid-template-columns:1fr 1.1fr;gap:28px;margin-top:30px;align-items:start}
+  .panel{background:#fff;color:var(--ink);border-radius:22px;padding:26px;box-shadow:0 20px 50px rgba(0,0,0,.2)}
+  .panel h3{font-size:1.15rem}
+  .chip-group{margin-bottom:18px}
+  .chip-group > span{display:block;font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-2);margin-bottom:8px}
+  .panel .chip{font-size:.86rem;padding:8px 13px;border-width:1.5px}
+  label{font-weight:700;font-size:.88rem;display:block;margin-bottom:6px}
+  textarea,input,select{width:100%;font:500 1rem Inter,sans-serif;padding:13px 14px;border-radius:12px;border:1.5px solid #cfd8e0;background:#fbfdff;color:var(--ink)}
+  textarea{min-height:190px;resize:vertical}
+  textarea:focus,input:focus,select:focus{outline:3px solid rgba(0,180,198,.35);border-color:var(--sea)}
+  .fields{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+  .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .hint{font-size:.8rem;color:var(--ink-2);margin-top:10px}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120px);background:var(--ink);color:#fff;padding:12px 20px;border-radius:999px;font-weight:600;transition:transform .3s;z-index:100}
+  .toast.show{transform:translateX(-50%) translateY(0)}
+
+  /* FAQ */
+  .faq{max-width:820px;margin-top:26px}
+  details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:4px 20px;margin-bottom:10px}
+  summary{cursor:pointer;font-weight:700;padding:14px 0;list-style:none;display:flex;justify-content:space-between;gap:10px}
+  summary::after{content:"+";font-size:1.4rem;line-height:1;color:var(--coral)}
+  details[open] summary::after{content:"–"}
+  details p{margin:0 0 16px;color:var(--ink-2)}
+
+  footer{background:var(--ink);color:#cfd8e0;padding:50px 0 30px;font-size:.9rem}
+  footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:24px}
+  footer h4{color:#fff;margin:0 0 10px}
+  footer ul{list-style:none;padding:0;margin:0}
+  footer li{margin-bottom:6px}
+  footer a{text-decoration:none}
+  footer a:hover{color:var(--lime)}
+  .fine{margin-top:34px;padding-top:20px;border-top:1px solid #23364a;font-size:.78rem;color:#8ea0b2}
+
+  @media (max-width:900px){
+    .nav ul{display:none;position:absolute;top:66px;left:0;right:0;background:var(--sand);flex-direction:column;padding:16px 20px;border-bottom:1px solid var(--line)}
+    .nav ul.open{display:flex}
+    .menu-toggle{display:block}
+    .nav .quote-btn{display:none}
+    .nav-right{margin-left:auto}
+    .menu-toggle{order:3}
+    .stats .wrap{grid-template-columns:repeat(2,1fr)}
+    .steps{grid-template-columns:1fr 1fr}
+    .planner-box{grid-template-columns:1fr}
+    footer .cols{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:560px){
+    section{padding:60px 0}
+    .wrap{padding:0 16px}
+    .grid{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr}
+    .fields{grid-template-columns:1fr}
+    .hero{padding:80px 0 90px}
+  }
+</style>
+</head>
+<body>
+
+<div class="promo">🌴 Early-bird for Spring Break 2027: <b>$99 deposit</b> locks your room + free party-pass upgrade through Dec 31, 2026</div>
+
+<header class="nav">
+  <div class="wrap">
+    <a href="#" class="logo">CANCÚN<span>'27</span></a>
+    <button class="menu-toggle" aria-label="Menu" onclick="document.querySelector('.nav ul').classList.toggle('open')">☰</button>
+    <ul>
+      <li><a href="#dates">Dates</a></li>
+      <li><a href="#operators">Operators</a></li>
+      <li><a href="#hotels">Hotels</a></li>
+      <li><a href="#party">Party Pass</a></li>
+      <li><a href="#excursions">Excursions</a></li>
+      <li><a href="#planner">Trip Planner</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-right">
+      <label class="engine-pick">
+        <span>Ask with</span>
+        <select id="engine" aria-label="AI assistant used for prompt links">
+          <option value="claude">Claude</option>
+          <option value="chatgpt">ChatGPT</option>
+          <option value="perplexity">Perplexity</option>
+          <option value="copilot">Copilot</option>
+          <option value="grok">Grok</option>
+          <option value="googleai">Google AI Mode</option>
+        </select>
+      </label>
+      <a href="#planner" class="btn btn-primary btn-sm quote-btn">Get a Quote</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--lime)">March 2027 · Cancún, Mexico</div>
+    <h1>Spring Break<br><em>Cancún 2027</em></h1>
+    <p>All-inclusive hotels on the Hotel Zone strip, a nightly party lineup, catamaran days on turquoise water — and one deposit to lock it all in with your crew.</p>
+    <div class="hero-ctas">
+      <a href="#hotels" class="btn btn-primary">See Packages</a>
+      <button type="button" class="btn btn-dark" data-buy="full">🎟️ Buy Party Pass</button>
+      <a href="#planner" class="btn btn-ghost">Plan My Trip</a>
+    </div>
+    <div class="countdown" id="countdown" aria-label="Countdown to spring break">
+      <div><b id="cd-d">--</b><small>Days</small></div>
+      <div><b id="cd-h">--</b><small>Hours</small></div>
+      <div><b id="cd-m">--</b><small>Min</small></div>
+      <div><b id="cd-s">--</b><small>Sec</small></div>
+    </div>
+    <div class="hero-chips">
+      <p>⚡ Quick start — tap a prompt</p>
+      <div class="chips">
+        <button class="chip" data-prompt="budget">💸 Cheapest trip for 4 friends</button>
+        <button class="chip" data-prompt="party">🎉 Max party week</button>
+        <button class="chip" data-prompt="chill">🏖️ Beach & chill vibes</button>
+        <button class="chip" data-prompt="bigGroup">👯 Group of 10+</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="wrap">
+    <div><b>8</b><span>Spring break weeks</span></div>
+    <div><b>6</b><span>All-inclusive hotels</span></div>
+    <div><b>7</b><span>Nights of events</span></div>
+    <div><b>$99</b><span>Deposit to book</span></div>
+  </div>
+</div>
+
+<!-- DATES -->
+<section id="dates">
+  <div class="wrap">
+    <div class="eyebrow">When to go</div>
+    <h2>Spring Break 2027 Weeks</h2>
+    <p class="lead">Every trip runs Saturday to Saturday. Pick the week that lines up with your school's break — peak weeks sell out first.</p>
+    <div class="weeks">
+      <div class="week"><span class="tag chill">Early</span><h3>Feb 27 – Mar 6</h3><p>Smaller crowds, best prices.</p></div>
+      <div class="week"><span class="tag peak">Peak</span><h3>Mar 6 – Mar 13</h3><p>Big kickoff week for many schools.</p></div>
+      <div class="week"><span class="tag hot">🔥 Hottest</span><h3>Mar 13 – Mar 20</h3><p>The biggest week of the season.</p></div>
+      <div class="week"><span class="tag peak">Peak</span><h3>Mar 20 – Mar 27</h3><p>Still packed, still loud.</p></div>
+      <div class="week"><span class="tag chill">Late</span><h3>Mar 27 – Apr 3</h3><p>Easter week — great weather, more space.</p></div>
+      <div class="week"><span class="tag chill">Late</span><h3>Apr 3 – Apr 10</h3><p>Late-break schools & budget deals.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TOUR OPERATORS -->
+<section id="operators" style="padding-top:20px">
+  <div class="wrap">
+    <div class="eyebrow">Who to book with</div>
+    <h2>Pick a Tour Operator</h2>
+    <p class="lead">Student tour companies bundle your hotel, transfers, on-site staff and party events into one package with a low deposit. Tap a card to select your operator. Its hotels show up first on each hotel card, and your trip request uses it. Prefer to skip the middleman? Every hotel also has a <a href="#hotels">Book direct</a> button.</p>
+    <div class="op-grid" id="opGrid" role="radiogroup" aria-label="Tour operator"></div>
+    <p class="hint" style="margin-top:14px">Prices and destinations come from each operator's site and change often — confirm 2027 details with them before booking.</p>
+  </div>
+</section>
+
+<!-- HOTELS -->
+<section id="hotels" style="padding-top:20px">
+  <div class="wrap">
+    <div class="eyebrow">Packages</div>
+    <h2>Pick Your Home Base</h2>
+    <p class="lead">Every package includes 7 nights, round-trip airport transfers, all-inclusive food & drinks, and on-site spring break staff. Prices are per person, quad occupancy, before flights.</p>
+    <div class="book-mode">
+      <p class="mode-note"><b>Two ways to book each hotel:</b> 🧳 <b>Book with tour operator</b> lists only the student tour companies selling a 2027 package for that hotel. A tour package bundles the room, transfers, on-site reps and party events. 🏨 <b>Book direct</b> takes you to the hotel's own site, for its rates and loyalty points, but you arrange everything else yourself.</p>
+    </div>
+    <div class="filters chips" id="filters">
+      <button class="chip active" data-filter="all">All</button>
+      <button class="chip" data-filter="party">Party central</button>
+      <button class="chip" data-filter="budget">Budget</button>
+      <button class="chip" data-filter="lux">Upscale</button>
+      <button class="chip" data-filter="mine" id="mineChip">Sold by StudentCity</button>
+    </div>
+    <div class="grid" id="hotelGrid"></div>
+  </div>
+</section>
+
+<!-- PARTY PASS -->
+<section id="party" class="party">
+  <div class="wrap">
+    <div class="eyebrow">Nightlife</div>
+    <h2>The 2027 Party Pass</h2>
+    <p class="lead">Skip the lines and cover charges. One wristband gets you into the week's biggest events — with open bar at most stops.</p>
+    <div class="events">
+      <div class="event"><div class="night">Sunday</div><h3>Welcome Beach Bash</h3><p>Kick off the week with DJs, foam cannons and sunset on the sand.</p></div>
+      <div class="event"><div class="night">Monday</div><h3>Acrobat Show Club Night</h3><p>The legendary Hotel Zone show-club — aerialists, confetti, live sets until 3am.</p></div>
+      <div class="event"><div class="night">Tuesday</div><h3>Pool Party Takeover</h3><p>Day party at a mega-pool with guest DJs and inflatables.</p></div>
+      <div class="event"><div class="night">Wednesday</div><h3>Booze Cruise to Isla Mujeres</h3><p>Open-bar catamaran, snorkel stop and beach club afternoon.</p></div>
+      <div class="event"><div class="night">Thursday</div><h3>Party Strip Crawl</h3><p>Hop the clubs on the Hotel Zone strip with one wristband.</p></div>
+      <div class="event"><div class="night">Friday</div><h3>Headliner Night</h3><p>Big-name DJ closing party — the night everyone talks about.</p></div>
+    </div>
+    <div class="pass-tiers">
+      <div class="tier"><div class="eyebrow">Starter</div><b class="amt">$149</b><ul><li>3 events of your choice</li><li>Express entry</li><li>Open bar at 2 events</li></ul><div class="tier-actions"><button class="btn btn-dark" data-buy="starter">Buy Starter — $149</button><button class="btn-text" data-prompt="passStarter">Ask about Starter</button></div></div>
+      <div class="tier best"><div class="eyebrow">Full Week</div><b class="amt">$279</b><ul><li>All 6 events</li><li>Open bar at every event</li><li>Booze cruise included</li><li>Official 2027 tank + wristband</li></ul><div class="tier-actions"><button class="btn btn-primary" data-buy="full">Buy Full Week — $279</button><button class="btn-text" data-prompt="passFull">Add to my trip request</button></div></div>
+      <div class="tier"><div class="eyebrow">VIP</div><b class="amt">$499</b><ul><li>Everything in Full Week</li><li>VIP tables & bottle service at 2 clubs</li><li>Private transport between events</li></ul><div class="tier-actions"><button class="btn btn-dark" data-buy="vip">Buy VIP — $499</button><button class="btn-text" data-prompt="passVip">Ask about VIP</button></div></div>
+    </div>
+
+    <div class="vendors">
+      <div class="eyebrow">Or buy from a tour operator</div>
+      <h3 class="vendors-title">Operator VIP Party Packages</h3>
+      <p class="lead">These tour operators sell their own Cancún party passes, which you buy on their sites. Most require a trip booked with that operator, so check before buying.</p>
+      <div class="vendor-grid" id="vendorGrid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXCURSIONS -->
+<section id="excursions">
+  <div class="wrap">
+    <div class="eyebrow">Daytime</div>
+    <h2>Excursions & Day Trips</h2>
+    <p class="lead">Recover by day. Add any of these to your package — our reps book transport and guides.</p>
+    <div class="ex-grid" id="exGrid"></div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section style="padding-top:20px">
+  <div class="wrap">
+    <div class="eyebrow">Booking</div>
+    <h2>How It Works</h2>
+    <div class="steps">
+      <div class="step"><h3>Pick your week</h3><p>Match your school's break and choose a hotel package.</p></div>
+      <div class="step"><h3>Put down $99</h3><p>Hold your room. Invite roommates with a group link.</p></div>
+      <div class="step"><h3>Split payments</h3><p>Everyone pays their share on their own schedule — final balance due 45 days out.</p></div>
+      <div class="step"><h3>Land & party</h3><p>Our airport reps greet you and get you to the Hotel Zone.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANNER -->
+<section id="planner" class="planner">
+  <div class="wrap">
+    <div class="eyebrow">Trip Planner</div>
+    <h2>Build Your Trip in One Tap</h2>
+    <p class="lead">Tap any prompt to prefill your request, tweak the details, then send it to our team for a quote — or ask Claude to help you plan.</p>
+    <div class="planner-box">
+      <div class="panel">
+        <h3>Prefilled prompts</h3>
+        <div class="chip-group"><span>Budget & group</span><div class="chips">
+          <button class="chip" data-prompt="budget">💸 Cheapest trip for 4</button>
+          <button class="chip" data-prompt="bigGroup">👯 Group of 10+</button>
+          <button class="chip" data-prompt="split">🧾 Split costs fairly</button>
+        </div></div>
+        <div class="chip-group"><span>Vibe</span><div class="chips">
+          <button class="chip" data-prompt="party">🎉 Max party week</button>
+          <button class="chip" data-prompt="chill">🏖️ Beach & chill</button>
+          <button class="chip" data-prompt="mix">⚖️ Half party, half adventure</button>
+        </div></div>
+        <div class="chip-group"><span>Plan details</span><div class="chips">
+          <button class="chip" data-prompt="itinerary">🗓️ 7-day itinerary</button>
+          <button class="chip" data-prompt="packing">🎒 Packing list</button>
+          <button class="chip" data-prompt="safety">🛟 Safety tips</button>
+          <button class="chip" data-prompt="flights">✈️ Flights from my city</button>
+          <button class="chip" data-prompt="excursions">🐢 Best excursions</button>
+          <button class="chip" data-prompt="compare">🏨 Compare hotels</button>
+          <button class="chip" data-prompt="opVsDirect">🤔 Tour operator vs. book direct</button>
+          <button class="chip" data-prompt="opCompare">🧳 Compare tour operators</button>
+        </div></div>
+      </div>
+      <form class="panel" id="planForm" onsubmit="return submitPlan(event)">
+        <label for="prompt">Your request</label>
+        <textarea id="prompt" name="prompt" placeholder="Tap a prompt on the left, or write your own…"></textarea>
+        <div class="fields">
+          <div><label for="week">Week</label>
+            <select id="week" name="week">
+              <option>Feb 27 – Mar 6</option><option>Mar 6 – Mar 13</option><option selected>Mar 13 – Mar 20</option>
+              <option>Mar 20 – Mar 27</option><option>Mar 27 – Apr 3</option><option>Apr 3 – Apr 10</option>
+            </select></div>
+          <div><label for="size">Group size</label><input id="size" name="size" type="number" min="1" max="40" value="4"></div>
+          <div><label for="city">Flying from</label><input id="city" name="city" placeholder="e.g. Chicago"></div>
+          <div><label for="bookVia">Book via</label>
+            <select id="bookVia" name="bookVia">
+              <option value="">Not sure — compare</option>
+              <optgroup label="Tour operators" id="bookViaOps"></optgroup>
+              <option>Directly with the hotel</option>
+            </select></div>
+          <div><label for="hotelPick">Hotel</label>
+            <select id="hotelPick" name="hotelPick"><option value="">Any / recommend one</option></select></div>
+          <div><label for="email">Email</label><input id="email" name="email" type="email" placeholder="you@school.edu" required></div>
+        </div>
+        <div class="actions">
+          <button type="submit" class="btn btn-primary">Get My Quote</button>
+          <a class="btn btn-dark" id="askEngine" href="#" target="_blank" rel="nofollow noopener">✦ Ask in <span class="engine-label">Claude</span> ↗</a>
+          <button type="button" class="btn btn-ghost" onclick="copyPrompt()">Copy</button>
+        </div>
+        <p class="hint">“Ask AI” opens the assistant you pick in a new tab with your request (week, group size, city, hotel and booking choice) already filled in.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="eyebrow">Questions</div>
+    <h2>FAQ</h2>
+    <div class="faq">
+      <details><summary>Do I need a passport?</summary><p>Yes — a valid passport book is required to fly to Mexico. Check that it doesn't expire during your trip, and apply early: processing can take several weeks.</p></details>
+      <details><summary>How old do I need to be?</summary><p>Travelers must be 18+ to book. The legal drinking age in Mexico is 18; some events may have their own age rules.</p></details>
+      <details><summary>Are flights included?</summary><p>Packages are priced land-only so you can use any airline or points. We can add flights from most major U.S. airports — use the “Flights from my city” prompt.</p></details>
+      <details><summary>Can my group pay separately?</summary><p>Yes. Each traveler gets their own payment link, and the room is held as long as each person's $99 deposit is in.</p></details>
+      <details><summary>What's the cancellation policy?</summary><p>Deposits are refundable for 14 days after booking. After that, you can switch to a travel credit up to 60 days before departure. Trip protection is available at checkout.</p></details>
+      <details><summary>Is Cancún safe for spring break?</summary><p>The Hotel Zone is the most visited area of Cancún and has a strong tourist-police presence. Stick with your group, use official taxis or our transport, watch your drinks, and check the latest U.S. State Department advisory before you go.</p></details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div><a href="#" class="logo" style="color:#fff">CANCÚN<span>'27</span></a><p>Spring break packages for college students, built for groups.</p></div>
+      <div><h4>Trip</h4><ul><li><a href="#dates">Dates</a></li><li><a href="#hotels">Hotels</a></li><li><a href="#party">Party Pass</a></li></ul></div>
+      <div><h4>Plan</h4><ul><li><a href="#excursions">Excursions</a></li><li><a href="#planner">Trip Planner</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li>Mon–Sat, 9am–9pm ET</li><li><a href="#planner">Request a quote</a></li></ul></div>
+    </div>
+    <p class="fine">Prices, dates and event lineups shown are sample figures for planning Spring Break 2027 and are subject to change. Must be 18+ to book. Please drink responsibly.</p>
+  </div>
+</footer>
+
+<!-- Party Pass checkout -->
+<dialog id="passDialog" aria-labelledby="passTitle">
+  <form method="dialog" class="pass-form" id="passForm">
+    <button class="x" value="cancel" aria-label="Close" formnovalidate>×</button>
+    <div class="eyebrow">Party Pass 2027</div>
+    <h3 id="passTitle">Book your Party Pass</h3>
+    <div class="pass-opts" id="passOpts">
+      <label><input type="radio" name="tier" value="starter"><span><b>Starter</b> $149<small>3 events</small></span></label>
+      <label><input type="radio" name="tier" value="full"><span><b>Full Week</b> $279<small>All 6 + cruise</small></span></label>
+      <label><input type="radio" name="tier" value="vip"><span><b>VIP</b> $499<small>Tables + transport</small></span></label>
+    </div>
+    <div class="fields">
+      <div><label for="passWeek">Week</label>
+        <select id="passWeek">
+          <option>Feb 27 – Mar 6</option><option>Mar 6 – Mar 13</option><option selected>Mar 13 – Mar 20</option>
+          <option>Mar 20 – Mar 27</option><option>Mar 27 – Apr 3</option><option>Apr 3 – Apr 10</option>
+        </select></div>
+      <div><label for="passQty">Number of passes</label>
+        <div class="qty"><button type="button" data-q="-1" aria-label="Fewer">−</button><input id="passQty" type="number" min="1" max="30" value="1"><button type="button" data-q="1" aria-label="More">+</button></div></div>
+      <div><label for="passName">Name on wristband</label><input id="passName" autocomplete="name" placeholder="First & last name"></div>
+      <div><label for="passEmail">Email</label><input id="passEmail" type="email" autocomplete="email" placeholder="you@school.edu"></div>
+    </div>
+    <label class="check"><input type="checkbox" id="passAge"> I confirm everyone on this order is 18+ and will bring a valid photo ID.</label>
+    <div class="pass-total">
+      <span>Total</span><b id="passTotal">$279</b>
+      <small id="passDue">Pay in full, or reserve with a $49/pass deposit</small>
+    </div>
+    <div class="actions">
+      <button type="button" class="btn btn-primary" id="passBuy">Buy now</button>
+      <button type="button" class="btn btn-ghost" id="passDeposit">Reserve with deposit</button>
+    </div>
+    <p class="hint">Booking your trip through a tour operator? Buy their pass instead: <a id="passOpLink" href="https://www.ststravel.com/" target="_blank" rel="noopener">Add a party pass through STS Travel ↗</a></p>
+  </form>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  // ---------- Data ----------
+  const U = id => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=900&q=60`;
+  // Package pages on each operator's site
+  const SC_HOTELS = "https://www.studentcity.com/trips-and-destinations/spring-break/cancun-mexico/hotels/";
+  const STS_HOTEL = slug => `https://www.ststravel.com/spring-break/mexico/cancun/hotels/${slug}`;
+  const INERTIA_CANCUN = "https://www.inertiatours.com/cancun/";
+  // `ops` = ONLY the operators whose own Cancún hotel lists include that hotel (checked Nov 16, 2026).
+  //   StudentCity: Grand Oasis, Krystal, Riu Cancún, Aloft
+  //   STS Travel:  Grand Oasis, The Pyramid, Riu Cancún, Riu Caribe, Riu Dunamar
+  //   Inertia:     Oasis Cancún only
+  //   StudentEscape, EF Ultimate Break, ISTours: no Cancún trips
+  const hotels = [
+    {name:"Grand Oasis Cancún", type:"party", tag:"hot", tagText:"🔥 Party HQ", img:U("photo-1582719508461-905c673771fd"),
+     vibe:"Biggest spring break hotel on the strip", perks:["Massive pool with daily DJ parties","Steps from the club district","Multiple restaurants & 24hr snacks"], price:899,
+     site:"https://www.oasishoteles.com/", ops:{studentcity:SC_HOTELS, sts:STS_HOTEL("grand-oasis-cancun"), inertia:INERTIA_CANCUN}},
+    {name:"The Pyramid Cancún", type:"party", tag:"peak", tagText:"Oasis complex", img:U("photo-1540541338287-41700207dee6"),
+     vibe:"Pyramid tower in the Grand Oasis complex", perks:["Shares the Grand Oasis pools & parties","Slightly quieter rooms","Huge beachfront"], price:949,
+     site:"https://www.oasishoteles.com/", ops:{sts:STS_HOTEL("the-pyramid-cancun")}},
+    {name:"Hotel Riu Cancún", type:"party", tag:"hot", tagText:"Party pool", img:U("photo-1571896349842-33c89424de2d"),
+     vibe:"Riu party resort in the heart of the Hotel Zone", perks:["Beachfront, close to the clubs","Busy pool with daily activities","24hr all-inclusive"], price:1099,
+     site:"https://www.riu.com/", ops:{studentcity:SC_HOTELS, sts:STS_HOTEL("hotel-riu-cancun")}},
+    {name:"Riu Caribe", type:"party", tag:"peak", tagText:"Pool parties", img:U("photo-1571896349842-33c89424de2d"),
+     vibe:"Non-stop pool deck energy", perks:["Swim-up bar & foam parties","Beachfront on calm water","Walk to the party center"], price:1049,
+     site:"https://www.riu.com/", ops:{sts:STS_HOTEL("hotel-riu-caribe")}},
+    {name:"Krystal Cancún", type:"budget", tag:"chill", tagText:"Best value", img:U("photo-1566073771259-6a8506099945"),
+     vibe:"Right at Punta Cancún", perks:["Walk to every club","Beachfront with Isla views","Lowest all-inclusive rate"], price:749,
+     site:"https://www.google.com/search?q=" + encodeURIComponent("Krystal Cancun official site"), ops:{studentcity:SC_HOTELS}},
+    {name:"Aloft Cancún", type:"budget", tag:"chill", tagText:"Modern", img:U("photo-1566073771259-6a8506099945"),
+     vibe:"Modern design hotel, not a classic resort", perks:["Sleek, modern rooms","Pool & bar scene","Good pick if you'll be out all day"], price:799,
+     site:"https://www.marriott.com/", ops:{studentcity:SC_HOTELS}},
+    {name:"Riu Dunamar", type:"lux", tag:"peak", tagText:"Newer resort", img:U("photo-1520250497591-112f2f40a3f4"),
+     vibe:"Quiet beach resort in Costa Mujeres, north of the Hotel Zone", perks:["Newer all-inclusive","Calm beach & big pools","Taxi needed to reach the clubs"], price:1199,
+     site:"https://www.riu.com/", ops:{sts:STS_HOTEL("hotel-riu-dunamar")}},
+    {name:"Oasis Palm", type:"budget", tag:"chill", tagText:"Budget", img:U("photo-1540541338287-41700207dee6"),
+     vibe:"Laid-back, quieter end of the zone", perks:["Huge pools, wide beach","Free shuttle to the party center","Great for bigger groups"], price:699,
+     site:"https://www.oasishoteles.com/", ops:{}},
+    {name:"Riu Palace Las Américas", type:"lux", tag:"peak", tagText:"Upscale", img:U("photo-1520250497591-112f2f40a3f4"),
+     vibe:"Upgraded rooms, still central", perks:["Premium drinks & à la carte dining","In-room liquor dispenser","Infinity pool over the lagoon"], price:1399,
+     site:"https://www.riu.com/", ops:{}},
+    {name:"Hyatt Ziva Cancún", type:"lux", tag:"hot", tagText:"Luxe", img:U("photo-1584132967334-10e028bd69f7"),
+     vibe:"Ocean on three sides at the point", perks:["Top-shelf all-inclusive","Swim-up suites available","Private beach club access"], price:1699,
+     site:"https://www.hyatt.com/", ops:{}},
+  ];
+  // Student tour operators. cancun: true = sells Cancún; false = Cancún not in their listed destinations; null = check site
+  const operators = {
+    studentcity:{name:"StudentCity", url:"https://www.studentcity.com/plan-a-trip/", cancun:true, from:"From ~$199 · $49 down",
+      blurb:"One of the biggest college spring break providers. Budget-friendly packages with low down payments.",
+      tags:["Budget","Low deposit"], dest:"Cancún, Punta Cana, Nassau, Cabo, Florida"},
+    sts:{name:"STS Travel", url:"https://www.ststravel.com/spring-break-packages", cancun:true, from:"Air + hotel or hotel-only",
+      blurb:"Air-and-hotel bundles or hotel-only, flexible payment plans and optional VIP party packages.",
+      tags:["Flexible payments","VIP packages"], dest:"Cancún, Punta Cana, Nassau, Los Cabos"},
+    inertia:{name:"Inertia Tours", url:"https://www.inertiatours.com/", cancun:true, from:"From ~$349 · low deposit",
+      blurb:"18+ college packages built around live artist concerts, with low deposit requirements.",
+      tags:["Live concerts","18+"], dest:"Cancún, Cabo, South Padre, Panama City Beach"},
+    studentescape:{name:"StudentEscape", url:"https://studentescape.com/", cancun:false, from:"0% interest payment plans",
+      blurb:"Beach party packages with 24-hour on-site concierge and the Maniac Card for club entry and perks.",
+      tags:["24hr concierge","Club card"], dest:"Panama City Beach, Fort Lauderdale, South Padre, Bahamas"},
+    ef:{name:"EF Ultimate Break", url:"https://www.efultimatebreak.com/trip-collections/spring-break-trips", cancun:false, from:"Interest-free payment plans",
+      blurb:"Culture and adventure group trips for ages 18–24 — less party, more exploring.",
+      tags:["Ages 18–24","Adventure"], dest:"Iceland, Costa Rica, Europe and more"},
+    istours:{name:"ISTours", url:"https://istours.com/home-page/our-programs/ist-springbreak/", cancun:false, from:"See site for pricing",
+      blurb:"IST Spring Break, from a student tour company running trips since 1976.",
+      tags:["Since 1976","Student travel"], dest:"Hawaii, Puerto Rico, Bahamas, Cabo"},
+  };
+  const opIds = Object.keys(operators);
+  const cancunBadge = c => c===true ? '<span class="tag hot">Cancún ✓</span>'
+    : c===false ? '<span class="tag chill">Cancún not listed</span>' : '<span class="tag peak">Check for Cancún</span>';
+  let selectedOp = 'studentcity';
+  const hotelsFor = id => hotels.filter(h => h.ops[id]);
+
+  const excursions = [
+    {name:"Isla Mujeres Catamaran", desc:"Open bar, snorkeling and a beach club stop.", price:89, img:U("photo-1544551763-46a013bb70d5")},
+    {name:"Chichén Itzá & Cenote", desc:"See a Wonder of the World, then swim a cenote.", price:119, img:U("photo-1518638150340-f706e86654de")},
+    {name:"Xel-Há Park", desc:"All-inclusive eco park — snorkel, zip, float.", price:139, img:U("photo-1504214208698-ea1916a2195a")},
+    {name:"Jungle ATV & Zip Lines", desc:"Mud, speed and a cenote jump to finish.", price:99, img:U("photo-1533587851505-d119e13fa0d7")},
+    {name:"Tulum Ruins & Beach", desc:"Cliffside ruins and the best beach photo of the trip.", price:109, img:U("photo-1504730655501-24c39ac53f0e")},
+    {name:"Swim with Sea Turtles", desc:"Akumal bay snorkel with wild green turtles.", price:79, img:U("photo-1591025207163-942350e47db2")},
+  ];
+
+  // ---------- Prefilled prompts ----------
+  const prompts = {
+    budget:"Plan the cheapest possible Cancún spring break 2027 trip for 4 friends. We want all-inclusive, close to the clubs, and the lowest total cost per person including flights. Which hotel and week give us the best deal?",
+    party:"We want the ultimate party week in Cancún for spring break 2027. Recommend the best party hotel, which Party Pass tier to get, and a night-by-night plan for the biggest events, clubs and the booze cruise.",
+    chill:"Plan a relaxed Cancún spring break 2027 trip — beaches, pools, good food and a couple of nights out. Suggest a quieter all-inclusive hotel and 2–3 laid-back excursions.",
+    bigGroup:"We're a group of 10–12 college students going to Cancún for spring break 2027. What's the best hotel for a big group, how should we split rooms, and how do group payments and deposits work?",
+    split:"Help my group split our Cancún spring break 2027 costs fairly. Some of us want the Full Week Party Pass and some don't, and room types differ. Show a per-person breakdown.",
+    mix:"Plan a Cancún spring break 2027 week that's half party, half adventure: 3–4 big nights out plus day trips like cenotes, Chichén Itzá or zip lining. Include a day-by-day schedule.",
+    itinerary:"Create a 7-day Cancún spring break 2027 itinerary (Saturday to Saturday) with daytime activities, where to eat, and which party event to hit each night.",
+    packing:"Make a complete packing list for a 7-night Cancún spring break 2027 trip, including documents, beach gear, going-out outfits, reef-safe sunscreen and anything people usually forget.",
+    safety:"Give me practical safety tips for spring break in Cancún 2027 — getting around the Hotel Zone, drinks, money, phones, taxis, and what to do if someone in the group gets separated.",
+    flights:"Find the best way to fly to Cancún (CUN) for spring break 2027 from my city. What airlines fly direct, how far ahead should we book, and what's a realistic round-trip price?",
+    excursions:"What are the best excursions in Cancún for spring break 2027? Rank Isla Mujeres catamaran, Chichén Itzá, Xel-Há, ATVs, Tulum and turtle snorkeling by fun, price and how hungover-friendly they are.",
+    compare:"Compare the top Cancún spring break 2027 hotels — Grand Oasis, The Pyramid, Hotel Riu Cancún, Riu Caribe, Krystal, Aloft, Riu Dunamar, Oasis Palm, Riu Palace Las Américas and Hyatt Ziva — by price, party level, location and food.",
+    passStarter:"Tell me more about the $149 Starter Party Pass for Cancún spring break 2027 — which 3 events should I pick for the best week?",
+    passFull:"Add the $279 Full Week Party Pass to my Cancún spring break 2027 trip and show me the full event schedule and what's included.",
+    opVsDirect:"For Cancún spring break 2027, should my group book through a student tour operator (like StudentCity, STS Travel or Inertia Tours) or book the hotel directly? Compare total cost, transfers, events, group payments, age rules and cancellation flexibility.",
+    opCompare:"Compare StudentCity, STS Travel, Inertia Tours, StudentEscape, EF Ultimate Break and ISTours for a Cancún spring break 2027 trip (note which ones actually offer Cancún): hotel options, deposits, payment plans, party pass/events, on-site staff and reviews. Which is best for my group?",
+    passVip:"I'm interested in the $499 VIP Party Pass for Cancún spring break 2027. What are the VIP tables, bottle service and private transport details?",
+  };
+  const opNames = h => Object.keys(h.ops).map(id => operators[id].name);
+  const hotelPrompt = h => {
+    const n = opNames(h);
+    return n.length
+      ? `I'm interested in ${h.name} for Cancún spring break 2027. Compare the packages from ${n.join(', ')} against booking the hotel directly: total cost per person for my group (with and without flights), what's included, deposits and the party pass.`
+      : `I want to book ${h.name} directly with the hotel for Cancún spring break 2027 (no student tour operator sells it). What are typical direct rates, age/check-in rules for spring breakers, and how do I arrange airport transfers and party events on my own?`;
+  };
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  // Live-lookup prompts for the per-card "Get 2027 update" links
+  const liveHotel = h =>
+    `Give me the most up-to-date information on ${h.name} for Cancún Spring Break 2027. Include: ` +
+    `(1) current direct rates for March 2027 and all-inclusive inclusions; ` +
+    `(2) 2027 spring break packages that include this hotel from StudentCity, STS Travel, Inertia Tours and other student tour companies, with prices and what's included; ` +
+    `(3) minimum check-in age and spring break policies; ` +
+    `(4) location relative to the Hotel Zone clubs; ` +
+    `(5) recent guest reviews from spring breakers.`;
+  const liveEx = e =>
+    `Give me the latest details on the ${e.name} excursion from Cancún for March 2027: current prices, top operators, what's included, duration, pickup from the Hotel Zone, and recent reviews.`;
+  const exPrompt = e => `Add the ${e.name} excursion ($${e.price}/person) to our Cancún spring break 2027 trip. What day works best around the party schedule?`;
+
+  // ---------- Render ----------
+  const grid = document.getElementById('hotelGrid');
+  let currentFilter = 'all';
+  // Per-hotel "Book with tour operator" dropdown — lists ONLY operators selling that hotel
+  function opMenu(h){
+    const ids = Object.keys(h.ops).sort((a,b) => (b===selectedOp) - (a===selectedOp)); // your pick first
+    if (!ids.length) return `<span class="no-ops" title="None of the listed student tour operators sell a package for this hotel">No tour operator packages</span>`;
+    return `<div class="op-menu">
+      <button type="button" class="btn btn-dark btn-sm op-toggle" aria-haspopup="true" aria-expanded="false">🧳 Book with tour operator <span class="caret">▾</span></button>
+      <div class="op-list" role="menu">
+        <div class="op-head">${ids.length} operator${ids.length>1?'s':''} sell${ids.length>1?'':'s'} this hotel</div>
+        ${ids.map(id => `<a role="menuitem" href="${h.ops[id]}" target="_blank" rel="noopener">
+            <span>${operators[id].name}${id===selectedOp ? ' <em>· your pick</em>' : ''}<small>${operators[id].from}</small></span><span aria-hidden="true">↗</span></a>`).join('')}
+      </div>
+    </div>`;
+  }
+  function renderHotels(filter=currentFilter){
+    currentFilter = filter;
+    const list = hotels.filter(h => filter==='all' || (filter==='mine' ? h.ops[selectedOp] : h.type===filter));
+    grid.innerHTML = list.length ? list.map(h => { const n = opNames(h); return `
+      <article class="hotel">
+        <div class="img" style="background-image:url('${h.img}'),linear-gradient(135deg,#00b4c6,#006d80)"><span class="tag ${h.tag}">${h.tagText}</span></div>
+        <div class="body">
+          <h3>${h.name}</h3>
+          <div class="vibe">${h.vibe}</div>
+          <ul>${h.perks.map(p=>`<li>${p}</li>`).join('')}</ul>
+          <div class="sold-by">${n.length ? `🧳 Packages from: <b>${n.join(' · ')}</b>` : '🏨 Book direct only'}</div>
+          <div class="price">
+            <div><small>7 nights from</small><b>$${h.price}</b></div>
+            <button class="btn btn-primary btn-sm" data-hotel="${h.name}">Plan this trip</button>
+          </div>
+          <div class="book-row">
+            ${opMenu(h)}
+            <a class="btn btn-ghost btn-sm" href="${h.site}" target="_blank" rel="noopener">🏨 Book direct ↗</a>
+          </div>
+          <a class="ask-link" data-ask="${esc(liveHotel(h))}" href="#" target="_blank" rel="nofollow noopener">✦ Get 2027 update in <span class="engine-label">Claude</span> ↗</a>
+        </div>
+      </article>`; }).join('')
+      : `<p class="lead">${operators[selectedOp].name} doesn't sell any Cancún hotel packages. <a href="#operators">Pick another operator</a> or book a hotel direct.</p>`;
+    updateAiLinks();
+  }
+  function closeOpMenus(except){
+    document.querySelectorAll('.op-menu.open').forEach(m => { if (m!==except){ m.classList.remove('open'); m.querySelector('.op-toggle').setAttribute('aria-expanded','false'); }});
+  }
+  document.addEventListener('click', e => {
+    const t = e.target.closest('.op-toggle');
+    if (t){ const m = t.closest('.op-menu'); closeOpMenus(m); t.setAttribute('aria-expanded', m.classList.toggle('open')); return; }
+    if (!e.target.closest('.op-list')) closeOpMenus();
+    else if (e.target.closest('a')) closeOpMenus();
+  });
+  document.addEventListener('keydown', e => { if (e.key==='Escape') closeOpMenus(); });
+
+  function setOperator(id){
+    selectedOp = id;
+    bookVia.value = operators[id].name;   // keep the planner's "Book via" in sync
+    document.querySelectorAll('#opGrid .op').forEach(c => {
+      const on = c.dataset.op===id; c.classList.toggle('sel', on); c.setAttribute('aria-checked', on);
+    });
+    document.getElementById('mineChip').textContent = `Sold by ${operators[id].name}`;
+    renderHotels();
+  }
+  const bookVia = document.getElementById('bookVia');
+
+  // Operator dropdowns + cards are all generated from the `operators` data
+  document.getElementById('bookViaOps').innerHTML = opIds.map(id => `<option>${operators[id].name}</option>`).join('');
+  const opPrompt = o => `What are ${o.name}'s Cancún Spring Break 2027 offerings? List hotels, departure cities, prices with and without flights, deposit and refund policy, payment plans, party/VIP pass contents, announced 2027 events, booking deadlines and recent customer reviews. If they don't offer Cancún, say so and list their 2027 destinations.`;
+  document.getElementById('opGrid').innerHTML = opIds.map(id => { const o = operators[id]; return `
+    <article class="op${o.cancun===false ? ' dim' : ''}" data-op="${id}" role="radio" aria-checked="false" tabindex="0">
+      ${cancunBadge(o.cancun)}
+      <h3>${o.name}</h3>
+      <div class="from">${o.from}</div>
+      <p>${o.blurb}</p>
+      <div class="mini">${o.tags.map(t=>`<span>${t}</span>`).join('')}</div>
+      <div class="dest">📍 ${o.dest}</div>
+      <div class="dest">🏨 ${hotelsFor(id).length ? `Cancún hotels: <b>${hotelsFor(id).map(h=>h.name).join(', ')}</b>` : 'No Cancún hotel packages'}</div>
+      <div class="op-actions">
+        <button type="button" class="btn btn-primary btn-sm" data-pick-op="${id}">Select</button>
+        <a class="btn btn-ghost btn-sm" href="${o.url}" target="_blank" rel="noopener">Visit site ↗</a>
+        <a class="ask-link" data-ask="${esc(opPrompt(o))}" href="#" target="_blank" rel="nofollow noopener">✦ 2027 details in <span class="engine-label">Claude</span> ↗</a>
+      </div>
+    </article>`; }).join('');
+  function pickOperator(id){
+    setOperator(id);
+    toast(`${operators[id].name} selected${operators[id].cancun===false ? ' — note: Cancún isn\'t in their listed destinations' : ''}`);
+  }
+  const opGrid = document.getElementById('opGrid');
+  opGrid.addEventListener('click', e => {
+    if (e.target.closest('a')) return;               // let Visit site / Ask links work normally
+    const c = e.target.closest('.op'); if (c) pickOperator(c.dataset.op);
+  });
+  opGrid.addEventListener('keydown', e => {
+    const c = e.target.closest('.op');
+    if (c && (e.key==='Enter' || e.key===' ')) { e.preventDefault(); pickOperator(c.dataset.op); }
+  });
+  const hotelPick = document.getElementById('hotelPick');
+  hotelPick.insertAdjacentHTML('beforeend', hotels.map(h=>`<option>${h.name}</option>`).join(''));
+  document.getElementById('exGrid').innerHTML = excursions.map(e => `
+    <div class="ex">
+      <div class="img" style="background-image:url('${e.img}'),linear-gradient(135deg,#ffb020,#ff5a5f)"></div>
+      <div class="body"><h3>${e.name}</h3><p>${e.desc}</p>
+        <div class="row"><b>$${e.price}</b><button class="btn btn-ghost btn-sm" data-ex="${e.name}">Add to trip</button></div>
+        <a class="ask-link" data-ask="${esc(liveEx(e))}" href="#" target="_blank" rel="nofollow noopener">✦ Latest details in <span class="engine-label">Claude</span> ↗</a>
+      </div>
+    </div>`).join('');
+
+  document.getElementById('filters').addEventListener('click', e => {
+    const b = e.target.closest('[data-filter]'); if(!b) return;
+    document.querySelectorAll('#filters .chip').forEach(c=>c.classList.toggle('active', c===b));
+    renderHotels(b.dataset.filter);
+  });
+
+  // ---------- Prompt handling ----------
+  const ta = document.getElementById('prompt');
+  const fields = ['week','size','city','bookVia','hotelPick'].map(id=>document.getElementById(id));
+  function fullPrompt(){
+    const [w,s,c,v,h] = fields.map(f=>f.value.trim());
+    let ctx = `\n\nDetails: week of ${w}, group of ${s||'?'}`;
+    if(c) ctx += `, flying from ${c}`;
+    if(h) ctx += `, hotel: ${h}`;
+    ctx += !v ? `, open to a tour operator or booking direct`
+         : v.startsWith('Directly') ? `, booking directly with the hotel` : `, booking via ${v}`;
+    return (ta.value.trim() || 'Help me plan a Cancún spring break 2027 trip.') + ctx + '.';
+  }
+  // ---------- "Ask with" AI engine picker (same pattern as springbreak.com) ----------
+  const ENGINES = {
+    claude:     { label:"Claude",         base:"https://claude.ai/new?q=" },
+    chatgpt:    { label:"ChatGPT",        base:"https://chatgpt.com/?q=" },
+    perplexity: { label:"Perplexity",     base:"https://www.perplexity.ai/search?q=" },
+    copilot:    { label:"Copilot",        base:"https://copilot.microsoft.com/?q=" },
+    grok:       { label:"Grok",           base:"https://grok.com/?q=" },
+    googleai:   { label:"Google AI Mode", base:"https://www.google.com/search?udm=50&q=" },
+  };
+  const SUFFIX = " Cite every fact with a source link and publish date, and clearly flag anything not yet confirmed for 2027. Today's date matters, so search the web for the latest info.";
+  let engine = 'claude';
+  try { engine = localStorage.getItem('cancun27-engine') || 'claude'; } catch (e) {}
+  if (!ENGINES[engine]) engine = 'claude';
+  const engineSel = document.getElementById('engine');
+  engineSel.value = engine;
+  const link = prompt => ENGINES[engine].base + encodeURIComponent(prompt + SUFFIX);
+
+  function updateAiLinks(){
+    document.getElementById('askEngine').href = link(fullPrompt());
+    document.querySelectorAll('a[data-ask]').forEach(a => a.href = link(a.dataset.ask));
+    document.querySelectorAll('.engine-label').forEach(el => el.textContent = ENGINES[engine].label);
+  }
+  engineSel.addEventListener('change', () => {
+    engine = engineSel.value;
+    try { localStorage.setItem('cancun27-engine', engine); } catch (e) {}
+    updateAiLinks();
+    toast(`Prompt links now open in ${ENGINES[engine].label}`);
+  });
+  document.addEventListener('click', e => {
+    const a = e.target.closest('#askEngine, a[data-ask]');
+    if (a) a.href = a.id==='askEngine' ? link(fullPrompt()) : link(a.dataset.ask);
+  });
+  function fill(text){
+    ta.value = text;
+    updateAiLinks();
+    document.getElementById('planner').scrollIntoView({behavior:'smooth'});
+    setTimeout(()=>{ ta.focus({preventScroll:true}); ta.setSelectionRange(ta.value.length, ta.value.length); }, 500);
+    toast('Prompt added — edit it or send it!');
+  }
+  document.addEventListener('click', e => {
+    const p = e.target.closest('[data-prompt]');
+    if(p && prompts[p.dataset.prompt]){
+      document.querySelectorAll('.panel .chip').forEach(c=>c.classList.toggle('active', c.dataset.prompt===p.dataset.prompt));
+      return fill(prompts[p.dataset.prompt]);
+    }
+    const h = e.target.closest('[data-hotel]');
+    if(h){ hotelPick.value = h.dataset.hotel; return fill(hotelPrompt(hotels.find(x=>x.name===h.dataset.hotel))); }
+    const x = e.target.closest('[data-ex]');
+    if(x){
+      const ex = excursions.find(y=>y.name===x.dataset.ex);
+      if(ta.value.trim()){ ta.value += `\n\nAlso: ` + exPrompt(ex); updateAiLinks(); toast(`${ex.name} added to your request`); }
+      else fill(exPrompt(ex));
+    }
+  });
+  [ta, ...fields].forEach(el => { el.addEventListener('input', updateAiLinks); el.addEventListener('change', updateAiLinks); });
+  setOperator('studentcity');
+
+  function copyPrompt(){
+    navigator.clipboard?.writeText(fullPrompt()).then(()=>toast('Copied to clipboard'), ()=>toast('Copy failed — select and copy manually'));
+  }
+  function submitPlan(e){
+    e.preventDefault();
+    toast('Thanks! A trip rep will email your quote within 24 hours. 🌴');
+    return false;
+  }
+  let tt;
+  function toast(msg){
+    const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show');
+    clearTimeout(tt); tt = setTimeout(()=>t.classList.remove('show'), 2600);
+  }
+
+  // ---------- Operator party-pass vendors ----------
+  // Prices/inclusions as listed on each operator's site (Nov 2026). Update here when they change.
+  const partyVendors = [
+    {op:'sts', name:'2 Night + Cruise VIP Party Package', url:'https://www.ststravel.com/spring-break-party-packages',
+     options:[{label:'2 nights + cruise', price:289}],
+     includes:['2 main club events with open bar','Express entry','Spring Break Party Cruise admission'],
+     venues:'Coco Bongo, Mandala Beach, HOF and more'},
+    {op:'inertia', name:'VIP Party Package', url:'https://www.inertiatours.com/cancun/',
+     options:[{label:'3 nights', price:259},{label:'4 nights', price:299}],
+     includes:['Open bar 10:00 PM – 2:00/3:00 AM','Nightly club access'],
+     venues:'The City, Coco Bongo, Mandala, Mandala Beach, Señor Frog\'s, La Vaquita'},
+  ];
+  const vendorPrompt = v => `Give me the latest details on ${operators[v.op].name}'s "${v.name}" for Cancún Spring Break 2027: current price${v.options.length>1?'s for each option':''}, which nights and clubs are included, open-bar hours, cruise details, whether I must book a trip with ${operators[v.op].name} to buy it, and recent reviews.`;
+  document.getElementById('vendorGrid').innerHTML = partyVendors.map(v => `
+    <article class="vendor">
+      <div class="vendor-op">${operators[v.op].name}</div>
+      <h4>${v.name}</h4>
+      <div class="vendor-prices">${v.options.map(o => `<div><b>$${o.price}</b><small>${o.label} · per person</small></div>`).join('')}</div>
+      <ul>${v.includes.map(i=>`<li>${i}</li>`).join('')}</ul>
+      <div class="vendor-venues">🎶 ${v.venues}</div>
+      <div class="vendor-actions">
+        <a class="btn btn-primary btn-sm" href="${v.url}" target="_blank" rel="noopener">Buy on ${operators[v.op].name} ↗</a>
+        <a class="ask-link" data-ask="${esc(vendorPrompt(v))}" href="#" target="_blank" rel="nofollow noopener">✦ Check 2027 details in <span class="engine-label">Claude</span> ↗</a>
+      </div>
+    </article>`).join('');
+  updateAiLinks();
+
+  // ---------- Party Pass checkout ----------
+  const PASSES = { starter:{name:'Starter', price:149}, full:{name:'Full Week', price:279}, vip:{name:'VIP', price:499} };
+  const PASS_DEPOSIT = 49;
+  const passDlg = document.getElementById('passDialog');
+  const passQty = document.getElementById('passQty');
+  const passTier = () => (document.querySelector('#passOpts input:checked') || {}).value || 'full';
+  function passCount(){ return Math.min(30, Math.max(1, parseInt(passQty.value,10) || 1)); }
+  function updatePassTotal(){
+    const t = PASSES[passTier()], n = passCount();
+    document.getElementById('passTotal').textContent = `$${(t.price*n).toLocaleString()}`;
+    document.getElementById('passDue').textContent = `${n} × ${t.name} ($${t.price}) — or reserve now for $${PASS_DEPOSIT*n} deposit ($${PASS_DEPOSIT}/pass)`;
+    document.getElementById('passBuy').textContent = `Buy now — $${(t.price*n).toLocaleString()}`;
+    const op = operators[selectedOp];
+    const a = document.getElementById('passOpLink');
+    // Point to the selected operator's own party package if they sell one, else to the first vendor
+    const v = partyVendors.find(x => x.op===selectedOp) || partyVendors[0];
+    const from = Math.min(...v.options.map(o=>o.price));
+    a.href = v.url; a.textContent = `${operators[v.op].name} ${v.name} (from $${from}) ↗`;
+  }
+  function openPass(tier){
+    document.querySelector(`#passOpts input[value="${tier}"]`).checked = true;
+    document.getElementById('passWeek').value = document.getElementById('week').value;
+    passQty.value = Math.max(1, parseInt(document.getElementById('size').value,10) || 1);
+    updatePassTotal();
+    passDlg.showModal();
+  }
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-buy]'); if (b) openPass(b.dataset.buy);
+    const q = e.target.closest('[data-q]');
+    if (q){ passQty.value = passCount() + Number(q.dataset.q); passQty.value = passCount(); updatePassTotal(); }
+  });
+  document.getElementById('passOpts').addEventListener('change', updatePassTotal);
+  passQty.addEventListener('input', updatePassTotal);
+  passDlg.addEventListener('click', e => { if (e.target === passDlg) passDlg.close(); }); // click backdrop to close
+  function checkoutPass(deposit){
+    const email = document.getElementById('passEmail'), name = document.getElementById('passName');
+    if (!name.value.trim()) { name.focus(); return toast('Add the name for the wristband'); }
+    if (!email.checkValidity() || !email.value) { email.focus(); return toast('Add a valid email for your tickets'); }
+    if (!document.getElementById('passAge').checked) return toast('Please confirm everyone is 18+');
+    const t = PASSES[passTier()], n = passCount();
+    const amt = deposit ? PASS_DEPOSIT*n : t.price*n;
+    // TODO: hand off to a real payment processor (e.g. Stripe Checkout) here.
+    passDlg.close();
+    toast(`${n} × ${t.name} pass ${deposit ? 'reserved' : 'booked'} — $${amt} (demo checkout, no payment taken)`);
+  }
+  document.getElementById('passBuy').addEventListener('click', () => checkoutPass(false));
+  document.getElementById('passDeposit').addEventListener('click', () => checkoutPass(true));
+
+  // ---------- Countdown (to Sat Mar 13, 2027) ----------
+  const target = new Date('2027-03-13T00:00:00-05:00').getTime();
+  function tick(){
+    let d = Math.max(0, target - Date.now());
+    const pad = n => String(n).padStart(2,'0');
+    document.getElementById('cd-d').textContent = Math.floor(d/864e5);
+    document.getElementById('cd-h').textContent = pad(Math.floor(d/36e5)%24);
+    document.getElementById('cd-m').textContent = pad(Math.floor(d/6e4)%60);
+    document.getElementById('cd-s').textContent = pad(Math.floor(d/1e3)%60);
+  }
+  tick(); setInterval(tick, 1000);
+</script>
+</body>
+</html>
