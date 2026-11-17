@@ -213,10 +213,6 @@
   .ex .row b{color:var(--sea-deep)}
 
   /* Steps */
-  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:30px;counter-reset:s}
-  .step{background:#fff;border-radius:var(--radius);padding:24px;border:1px solid var(--line);counter-increment:s}
-  .step::before{content:counter(s);display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--sea);color:#fff;font-family:Anton,sans-serif;font-size:1.3rem;margin-bottom:12px}
-  .step p{margin:0;color:var(--ink-2);font-size:.93rem}
 
   /* Planner */
   .planner{background:linear-gradient(135deg,var(--sea),var(--sea-deep));color:#fff}
@@ -262,7 +258,6 @@
     .nav-right{margin-left:auto}
     .menu-toggle{order:3}
     .stats .wrap{grid-template-columns:repeat(2,1fr)}
-    .steps{grid-template-columns:1fr 1fr}
     .planner-box{grid-template-columns:1fr}
     footer .cols{grid-template-columns:1fr 1fr}
   }
@@ -270,7 +265,6 @@
     section{padding:60px 0}
     .wrap{padding:0 16px}
     .grid{grid-template-columns:1fr}
-    .steps{grid-template-columns:1fr}
     .fields{grid-template-columns:1fr}
     .hero{padding:80px 0 90px}
   }
@@ -425,20 +419,6 @@
     <h2>Excursions & Day Trips</h2>
     <p class="lead">Recover by day. Add any of these to your package — our reps book transport and guides.</p>
     <div class="ex-grid" id="exGrid"></div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section style="padding-top:20px">
-  <div class="wrap">
-    <div class="eyebrow">Booking</div>
-    <h2>How It Works</h2>
-    <div class="steps">
-      <div class="step"><h3>Pick your week</h3><p>Match your school's break and choose a hotel package.</p></div>
-      <div class="step"><h3>Put down $99</h3><p>Hold your room. Invite roommates with a group link.</p></div>
-      <div class="step"><h3>Split payments</h3><p>Everyone pays their share on their own schedule — final balance due 45 days out.</p></div>
-      <div class="step"><h3>Land & party</h3><p>Our airport reps greet you and get you to the Hotel Zone.</p></div>
-    </div>
   </div>
 </section>
 
