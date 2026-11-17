@@ -391,7 +391,6 @@
       <button class="chip" data-filter="party">Party central</button>
       <button class="chip" data-filter="budget">Budget</button>
       <button class="chip" data-filter="lux">Upscale</button>
-      <button class="chip" data-filter="mine" id="mineChip">Sold by StudentCity</button>
     </div>
     <div class="grid" id="hotelGrid"></div>
   </div>
@@ -684,7 +683,7 @@
   }
   function renderHotels(filter=currentFilter){
     currentFilter = filter;
-    const list = hotels.filter(h => filter==='all' || (filter==='mine' ? h.ops[selectedOp] : h.type===filter));
+    const list = hotels.filter(h => filter==='all' || h.type===filter);
     grid.innerHTML = list.length ? list.map(h => { const n = opNames(h); return `
       <article class="hotel">
         <div class="img" style="background-image:url('${h.img}'),linear-gradient(135deg,#00b4c6,#006d80)"><span class="tag ${h.tag}">${h.tagText}</span></div>
@@ -724,7 +723,6 @@
     document.querySelectorAll('#opGrid .op').forEach(c => {
       const on = c.dataset.op===id; c.classList.toggle('sel', on); c.setAttribute('aria-checked', on);
     });
-    document.getElementById('mineChip').textContent = `Sold by ${operators[id].name}`;
     renderExcursions();
     renderHotels();   // also refreshes all AI links
   }
