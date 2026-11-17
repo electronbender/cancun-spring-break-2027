@@ -179,8 +179,13 @@
 
   /* Excursions */
   .ex-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;margin-top:30px}
-  .ex{background:#fff;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
-  .ex .img{height:150px;background-size:cover;background-position:center}
+  .ex{background:#fff;border-radius:var(--radius);border:1px solid var(--line);position:relative;display:flex;flex-direction:column}
+  .ex:has(.op-menu.open){z-index:20}
+  .ex .body{display:flex;flex-direction:column;flex:1}
+  .ex .book-row{margin-top:auto;padding-top:8px}
+  .ex .row{margin-top:12px;flex-wrap:wrap;gap:6px}
+  .ex .row .ask-link{margin-top:0}
+  .ex .img{border-radius:var(--radius) var(--radius) 0 0;height:150px;background-size:cover;background-position:center}
   .ex .body{padding:16px 18px 18px}
   .ex h3{font-size:1.05rem}
   .ex p{margin:0 0 12px;font-size:.9rem;color:var(--ink-2)}
@@ -573,13 +578,27 @@
   let selectedOp = 'studentcity';
   const hotelsFor = id => hotels.filter(h => h.ops[id]);
 
+  // Excursions. `direct` = official providers you can book yourself; `ops` = ONLY tour operators that sell/book it.
+  // Checked Nov 16, 2026: Grupo Xcaret (xcaret.com) sells most tours directly.
+  //   STS Travel: party cruise in its VIP package; its Cancún reps book Tulum ruins & cenote swims.
+  //   Inertia Tours: "Booze Cruise" with its VIP Party Package. StudentCity lists no Cancún excursions.
+  const STS_CANCUN = "https://www.ststravel.com/spring-break/mexico/cancun";
+  const X = path => `https://www.xcaret.com/en/${path}`;
   const excursions = [
-    {name:"Isla Mujeres Catamaran", desc:"Open bar, snorkeling and a beach club stop.", price:89, img:U("photo-1544551763-46a013bb70d5")},
-    {name:"Chichén Itzá & Cenote", desc:"See a Wonder of the World, then swim a cenote.", price:119, img:U("photo-1518638150340-f706e86654de")},
-    {name:"Xel-Há Park", desc:"All-inclusive eco park — snorkel, zip, float.", price:139, img:U("photo-1504214208698-ea1916a2195a")},
-    {name:"Jungle ATV & Zip Lines", desc:"Mud, speed and a cenote jump to finish.", price:99, img:U("photo-1533587851505-d119e13fa0d7")},
-    {name:"Tulum Ruins & Beach", desc:"Cliffside ruins and the best beach photo of the trip.", price:109, img:U("photo-1504730655501-24c39ac53f0e")},
-    {name:"Swim with Sea Turtles", desc:"Akumal bay snorkel with wild green turtles.", price:79, img:U("photo-1591025207163-942350e47db2")},
+    {name:"Spring Break Party Cruise", desc:"Open-bar booze cruise with DJs, only for spring breakers on operator packages.", img:U("photo-1544551763-46a013bb70d5"),
+     direct:[], ops:{sts:{url:"https://www.ststravel.com/spring-break-party-packages", note:"In the 2 Night + Cruise VIP package"}, inertia:{url:INERTIA_CANCUN, note:"With the VIP Party Package"}}},
+    {name:"Isla Mujeres Catamaran", desc:"Sail to Isla Mujeres with snorkeling and beach time.", img:U("photo-1544551763-46a013bb70d5"),
+     direct:[{name:"Xailing Catamaran (Grupo Xcaret)", url:X("xailing/catamaran-tours/")}, {name:"Xailing Ferry to Isla Mujeres", url:X("xailing/ferry-isla-mujeres/")}], ops:{}},
+    {name:"Chichén Itzá & Cenote", desc:"See a Wonder of the World, then swim a cenote.", img:U("photo-1518638150340-f706e86654de"),
+     direct:[{name:"Xichén Tour (Grupo Xcaret)", url:X("buy-my-xichen-tour/")}], ops:{}},
+    {name:"Xel-Há Park", desc:"All-inclusive eco park: snorkel, zip line, float the river.", img:U("photo-1504214208698-ea1916a2195a"),
+     direct:[{name:"Xel-Há tickets (Grupo Xcaret)", url:X("buy-my-ticket-xel-ha/")}], ops:{}},
+    {name:"Jungle ATV & Zip Lines", desc:"Zip lines, amphibious vehicles and underground rivers.", img:U("photo-1533587851505-d119e13fa0d7"),
+     direct:[{name:"Xplor Park (Grupo Xcaret)", url:X("parks-and-tours/xplor-admission/")}, {name:"ATV Xperience (Grupo Xcaret)", url:X("parks-and-tours/atv-xperience/")}], ops:{}},
+    {name:"Tulum Ruins & Beach", desc:"Cliffside Maya ruins and the best beach photo of the trip.", img:U("photo-1504730655501-24c39ac53f0e"),
+     direct:[{name:"Tulum + Xel-Há Tour (Grupo Xcaret)", url:X("parks-and-tours/tour-tulum-xelha/")}], ops:{sts:{url:STS_CANCUN, note:"Booked through STS reps in Cancún"}}},
+    {name:"Cenote Swim Tour", desc:"Swim in crystal-clear underground cenotes in the jungle.", img:U("photo-1504214208698-ea1916a2195a"),
+     direct:[{name:"Xenotes Tour (Grupo Xcaret)", url:X("parks-and-tours/tour-xenotes/")}], ops:{sts:{url:STS_CANCUN, note:"Booked through STS reps in Cancún"}}},
   ];
 
   // ---------- Prefilled prompts ----------
@@ -594,7 +613,7 @@
     packing:"Make a complete packing list for a 7-night Cancún spring break 2027 trip, including documents, beach gear, going-out outfits, reef-safe sunscreen and anything people usually forget.",
     safety:"Give me practical safety tips for spring break in Cancún 2027 — getting around the Hotel Zone, drinks, money, phones, taxis, and what to do if someone in the group gets separated.",
     flights:"Find the best way to fly to Cancún (CUN) for spring break 2027 from my city. What airlines fly direct, how far ahead should we book, and what's a realistic round-trip price?",
-    excursions:"What are the best excursions in Cancún for spring break 2027? Rank Isla Mujeres catamaran, Chichén Itzá, Xel-Há, ATVs, Tulum and turtle snorkeling by fun, price and how hungover-friendly they are.",
+    excursions:"What are the best excursions in Cancún for spring break 2027? Rank the spring break party cruise, Isla Mujeres catamaran, Chichén Itzá, Xel-Há, Xplor zip lines/ATVs, Tulum and cenote tours by fun, price and how hungover-friendly they are.",
     compare:"Compare the top Cancún spring break 2027 hotels — Grand Oasis, The Pyramid, Hotel Riu Cancún, Riu Caribe, Krystal, Aloft, Riu Dunamar, Oasis Palm, Riu Palace Las Américas and Hyatt Ziva — by price, party level, location and food.",
     opVsDirect:"For Cancún spring break 2027, should my group book through a student tour operator (like StudentCity, STS Travel or Inertia Tours) or book the hotel directly? Compare total cost, transfers, events, group payments, age rules and cancellation flexibility.",
     opCompare:"Compare StudentCity, STS Travel, Inertia Tours, StudentEscape, EF Ultimate Break and ISTours for a Cancún spring break 2027 trip (note which ones actually offer Cancún): hotel options, deposits, payment plans, party pass/events, on-site staff and reviews. Which is best for my group?",
@@ -617,7 +636,7 @@
     `(5) recent guest reviews from spring breakers.`;
   const liveEx = e =>
     `Give me the latest details on the ${e.name} excursion from Cancún for March 2027: current prices, top operators, what's included, duration, pickup from the Hotel Zone, and recent reviews.`;
-  const exPrompt = e => `Add the ${e.name} excursion ($${e.price}/person) to our Cancún spring break 2027 trip. What day works best around the party schedule?`;
+  const exPrompt = e => `Add the ${e.name} excursion to our Cancún spring break 2027 trip. What does it cost per person, and what day works best around the party schedule?`;
 
   // ---------- Render ----------
   const grid = document.getElementById('hotelGrid');
@@ -678,7 +697,8 @@
       const on = c.dataset.op===id; c.classList.toggle('sel', on); c.setAttribute('aria-checked', on);
     });
     document.getElementById('mineChip').textContent = `Sold by ${operators[id].name}`;
-    renderHotels();
+    renderExcursions();
+    renderHotels();   // also refreshes all AI links
   }
   const bookVia = document.getElementById('bookVia');
 
@@ -715,14 +735,39 @@
   });
   const hotelPick = document.getElementById('hotelPick');
   hotelPick.insertAdjacentHTML('beforeend', hotels.map(h=>`<option>${h.name}</option>`).join(''));
-  document.getElementById('exGrid').innerHTML = excursions.map(e => `
+  // Shared dropdown builder (same component as the hotel cards)
+  function bookMenu(label, cls, head, items){
+    return `<div class="op-menu">
+      <button type="button" class="btn ${cls} btn-sm op-toggle" aria-haspopup="true" aria-expanded="false">${label} <span class="caret">▾</span></button>
+      <div class="op-list" role="menu">
+        <div class="op-head">${head}</div>
+        ${items.map(i => `<a role="menuitem" href="${i.url}" target="_blank" rel="noopener"><span>${i.name}<small>${i.note}</small></span><span aria-hidden="true">↗</span></a>`).join('')}
+      </div>
+    </div>`;
+  }
+  function exBooking(e){
+    const opIdsFor = Object.keys(e.ops).sort((a,b) => (b===selectedOp) - (a===selectedOp));
+    const direct = e.direct.length
+      ? bookMenu('🎟️ Book direct', 'btn-ghost', `Official provider${e.direct.length>1?'s':''}`, e.direct.map(d => ({...d, note:'Buy tickets on their site'})))
+      : `<span class="no-ops" title="Only sold as part of a tour operator package">Operator packages only</span>`;
+    const ops = opIdsFor.length
+      ? bookMenu('🧳 Book with tour operator', 'btn-dark', `${opIdsFor.length} operator${opIdsFor.length>1?'s':''} offer${opIdsFor.length>1?'':'s'} this`,
+          opIdsFor.map(id => ({url:e.ops[id].url, name:operators[id].name + (id===selectedOp ? ' <em>· your pick</em>' : ''), note:e.ops[id].note})))
+      : '';
+    return ops + direct;
+  }
+  function renderExcursions(){
+    document.getElementById('exGrid').innerHTML = excursions.map(e => { const n = Object.keys(e.ops).map(id => operators[id].name); return `
     <div class="ex">
       <div class="img" style="background-image:url('${e.img}'),linear-gradient(135deg,#ffb020,#ff5a5f)"></div>
       <div class="body"><h3>${e.name}</h3><p>${e.desc}</p>
-        <div class="row"><b>$${e.price}</b><button class="btn btn-ghost btn-sm" data-ex="${e.name}">Add to trip</button></div>
-        <a class="ask-link" data-ask="${esc(liveEx(e))}" href="#" target="_blank" rel="nofollow noopener">✦ Latest details in <span class="engine-label">Claude</span> ↗</a>
+        <div class="sold-by">${n.length ? `🧳 Tour operators: <b>${n.join(' · ')}</b>` : '🎟️ Book direct only (no tour operator sells it)'}</div>
+        <div class="book-row">${exBooking(e)}</div>
+        <div class="row"><button class="btn-text" data-ex="${e.name}">+ Add to my trip request</button>
+        <a class="ask-link" data-ask="${esc(liveEx(e))}" href="#" target="_blank" rel="nofollow noopener">✦ Prices & details in <span class="engine-label">Claude</span> ↗</a></div>
       </div>
-    </div>`).join('');
+    </div>`; }).join('');
+  }
 
   document.getElementById('filters').addEventListener('click', e => {
     const b = e.target.closest('[data-filter]'); if(!b) return;
