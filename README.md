@@ -11,6 +11,7 @@ A single-page spring break site for Cancún, March 2027. Everything lives in `in
 - **Tour operators:** StudentCity, STS Travel, Inertia Tours, StudentEscape, EF Ultimate Break and ISTours, each marked with whether it sells Cancún.
 - **Hotel cards** have a **Book with tour operator** dropdown and a **Book direct** button. The dropdown lists only the operators that sell a package for that hotel.
 - **Excursion cards** have a **Book direct** dropdown, listing official providers such as Grupo Xcaret, and a **Book with tour operator** dropdown when an operator sells that excursion.
+- **Top 8 nightclubs:** Coco Bongo, Mandala, Mandala Beach, Señor Frog's, La Vaquita, Congo Bar, H Roof and Rakata, each with a link to its official ticket and table booking page.
 - **Party packages:** the real VIP party packages sold by STS Travel and Inertia Tours, with Buy buttons that open the operator's own site.
 - Excursions, spring break weeks, FAQ and a countdown.
 
@@ -23,6 +24,7 @@ All data is at the top of the `<script>` in `index.html`:
 | Hotels and which operators sell them | `hotels` (each hotel's `ops`) |
 | Tour operators | `operators` |
 | Operator party packages | `partyVendors` |
+| Nightclubs and their booking links | `clubs` |
 | Excursions, direct providers and operators | `excursions` (each one's `direct` and `ops`) |
 | AI assistants | `ENGINES` |
 | Prompt buttons | `prompts` |

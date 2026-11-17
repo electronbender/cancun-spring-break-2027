@@ -177,6 +177,26 @@
   .vendor .ask-link{color:var(--lime);margin-top:0}
   .btn-text{background:none;border:0;font:600 .88rem Inter,sans-serif;color:var(--sea-deep);cursor:pointer;text-decoration:underline;padding:4px}
 
+  /* Nightclubs */
+  .clubs-jump{margin:22px 0 0;font-weight:600}
+  .clubs-jump a{color:var(--lime)}
+  .clubs-sec{background:#12061f;color:#fff}
+  .clubs-sec .lead,.clubs-sec .hint{color:#d9c9ef}
+  .clubs-sec .eyebrow{color:var(--lime)}
+  .club-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;margin-top:28px}
+  .club{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column}
+  .club-top{padding:20px 20px 16px;background:linear-gradient(135deg,var(--c1),var(--c2));position:relative}
+  .club-rank{position:absolute;top:14px;right:16px;font-family:Anton,sans-serif;font-size:1.8rem;opacity:.45}
+  .club-top h3{font-family:Anton,sans-serif;font-weight:400;font-size:1.7rem;text-transform:uppercase;letter-spacing:.5px;margin:0 0 4px}
+  .club-type{font-size:.78rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;opacity:.9}
+  .club-body{padding:16px 20px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .club-body p{margin:0;color:#e6dcf2;font-size:.92rem}
+  .club-meta{font-size:.82rem;color:#d9c9ef}
+  .club-pkg{font-size:.78rem;background:rgba(198,244,50,.12);border:1px solid rgba(198,244,50,.35);color:var(--lime);border-radius:10px;padding:6px 10px}
+  .club-actions{display:flex;flex-direction:column;gap:8px;margin-top:auto;padding-top:6px}
+  .club-actions .btn{width:100%}
+  .club .ask-link{color:var(--lime);margin-top:0}
+
   /* Excursions */
   .ex-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;margin-top:30px}
   .ex{background:#fff;border-radius:var(--radius);border:1px solid var(--line);position:relative;display:flex;flex-direction:column}
@@ -270,6 +290,7 @@
       <li><a href="#operators">Operators</a></li>
       <li><a href="#hotels">Hotels</a></li>
       <li><a href="#party">Party Packages</a></li>
+      <li><a href="#clubs">Clubs</a></li>
       <li><a href="#excursions">Excursions</a></li>
       <li><a href="#planner">Trip Planner</a></li>
       <li><a href="#faq">FAQ</a></li>
@@ -385,9 +406,18 @@
     <h2>Cancún Party Packages</h2>
     <p class="lead">Student tour operators sell VIP party packages with open bar and express entry at Cancún's biggest clubs. You buy them on the operator's own site, and most require a trip booked with that operator, so check before buying.</p>
     <div class="vendor-grid" id="vendorGrid"></div>
-    <div class="clubs" aria-label="Clubs covered by these packages">
-      <span>Coco Bongo</span><span>Mandala</span><span>Mandala Beach</span><span>HOF</span><span>The City</span><span>Señor Frog's</span><span>La Vaquita</span>
-    </div>
+    <p class="clubs-jump">Rather pay club by club? <a href="#clubs">See the top 8 clubs and book tickets or tables direct ↓</a></p>
+  </div>
+</section>
+
+<!-- NIGHTCLUBS -->
+<section id="clubs" class="clubs-sec">
+  <div class="wrap">
+    <div class="eyebrow">Nightlife</div>
+    <h2>Top 8 Cancún Nightclubs</h2>
+    <p class="lead">Book tickets, open-bar passes or VIP tables straight from each club's official ticket site. Most clubs are in the Hotel Zone party center, within walking distance of each other. You must be 18+ with a photo ID.</p>
+    <div class="club-grid" id="clubGrid"></div>
+    <p class="hint" style="margin-top:14px">Hours and lineups change during spring break, so check the club's site before you go. Tickets on Grupo Mandala's MandalaTickets usually need check-in before 10:30 PM.</p>
   </div>
 </section>
 
@@ -881,6 +911,48 @@
       <div class="vendor-actions">
         <a class="btn btn-primary btn-sm" href="${v.url}" target="_blank" rel="noopener">Buy on ${operators[v.op].name} ↗</a>
         <a class="ask-link" data-ask="${esc(vendorPrompt(v))}" href="#" target="_blank" rel="nofollow noopener">✦ Check 2027 details in <span class="engine-label">Claude</span> ↗</a>
+      </div>
+    </article>`).join('');
+
+  // ---------- Top 8 nightclubs ----------
+  // Booking links = each club's official ticket site (checked Nov 16, 2026):
+  //   Grupo Mandala venues -> mandalatickets.com; Coco Bongo & Congo Bar -> cocobongo.com; H Roof -> hroof.com.mx
+  // `pkgs` = operator party packages that list the club (from the STS / Inertia package details above).
+  const MT = slug => `https://mandalatickets.com/en/cancun/disco/${slug}`;
+  const clubs = [
+    {name:"Coco Bongo", type:"Show + club", c:["#ff2d75","#7a1655"], desc:"Cancún's most famous night out: aerial acts, live tribute shows, confetti and dancing until late.",
+     hours:"See site for show nights", seller:"cocobongo.com (official)", url:"https://www.cocobongo.com/en/show/cancun", pkgs:["sts","inertia"]},
+    {name:"Mandala", type:"Open-air club", c:["#ffb020","#c2410c"], desc:"The heartbeat of the party center, with an open-air front, mixed music and a packed dance floor.",
+     hours:"Daily, 10 PM – 3 AM", seller:"MandalaTickets (Grupo Mandala)", url:MT("mandala"), pkgs:["inertia"]},
+    {name:"Mandala Beach", type:"Beach & pool day party", c:["#00b4c6","#006d80"], desc:"Daytime beach club with a pool, DJs and spring break crowds right on the sand.",
+     hours:"Daily (day party)", seller:"MandalaTickets (Grupo Mandala)", url:MT("mandala-beach"), pkgs:["sts","inertia"]},
+    {name:"Señor Frog's", type:"Party bar", c:["#22c55e","#166534"], desc:"Famous party bar in the Hotel Zone, always packed with spring breakers.",
+     hours:"Daily", seller:"MandalaTickets (Grupo Mandala)", url:MT("frogs"), pkgs:["inertia"]},
+    {name:"La Vaquita", type:"Party bar", c:["#f472b6","#9d174d"], desc:"Cow-themed party bar in the party center, a spring break favorite.",
+     hours:"Thursday – Sunday", seller:"MandalaTickets (Grupo Mandala)", url:MT("la-vaquita"), pkgs:["inertia"]},
+    {name:"Congo Bar", type:"Bar party", c:["#a855f7","#4c1d95"], desc:"Coco Bongo's high-energy Hotel Zone bar party, with tickets and tables on the Coco Bongo site.",
+     hours:"See site", seller:"cocobongo.com (official)", url:"https://www.cocobongo.com/en/show/congo-bar-cancun", pkgs:[]},
+    {name:"H Roof", type:"Rooftop club", c:["#64748b","#0f172a"], desc:"Upscale rooftop club in the party center. Its slogan is #NotForEveryone.",
+     hours:"See site", seller:"hroof.com.mx (official)", url:"https://hroof.com.mx/linktree/", pkgs:[]},
+    {name:"Rakata", type:"Reggaeton club", c:["#ef4444","#7f1d1d"], desc:"Neon-lit urban club for reggaeton and perreo.",
+     hours:"Fri & Sat, 10 PM – 3 AM", seller:"MandalaTickets (Grupo Mandala)", url:MT("rakata"), pkgs:[]},
+  ];
+  const clubPrompt = c => `Give me the latest details for ${c.name} in Cancún during Spring Break March 2027: ticket and open-bar prices, VIP table and bottle-service prices, opening nights and hours, dress code, age rules, and the best night to go. Official tickets: ${c.url}`;
+  document.getElementById('clubGrid').innerHTML = clubs.map((c, i) => `
+    <article class="club">
+      <div class="club-top" style="--c1:${c.c[0]};--c2:${c.c[1]}">
+        <span class="club-rank">#${i+1}</span>
+        <div class="club-type">${c.type}</div>
+        <h3>${c.name}</h3>
+      </div>
+      <div class="club-body">
+        <p>${c.desc}</p>
+        <div class="club-meta">🕙 ${c.hours}<br>🎟️ Sold by ${c.seller}</div>
+        ${c.pkgs.length ? `<div class="club-pkg">✓ Also in the ${c.pkgs.map(id => operators[id].name).join(' & ')} VIP party package${c.pkgs.length>1?'s':''}</div>` : ''}
+        <div class="club-actions">
+          <a class="btn btn-primary btn-sm" href="${c.url}" target="_blank" rel="noopener">🎟️ Book tickets & tables ↗</a>
+          <a class="ask-link" data-ask="${esc(clubPrompt(c))}" href="#" target="_blank" rel="nofollow noopener">✦ Prices & best nights in <span class="engine-label">Claude</span> ↗</a>
+        </div>
       </div>
     </article>`).join('');
   updateAiLinks();
