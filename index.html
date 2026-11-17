@@ -524,7 +524,6 @@
   //   StudentCity: Grand Oasis, Krystal, Riu Cancún, Aloft
   //   STS Travel:  Grand Oasis, The Pyramid, Riu Cancún, Riu Caribe, Riu Dunamar
   //   Inertia:     Oasis Cancún only
-  //   StudentEscape, EF Ultimate Break, ISTours: no Cancún trips
   const hotels = [
     {name:"Grand Oasis Cancún", type:"party", tag:"hot", tagText:"🔥 Party HQ", img:U("photo-1582719508461-905c673771fd"),
      vibe:"Biggest spring break hotel on the strip", perks:["Massive pool with daily DJ parties","Steps from the club district","Multiple restaurants & 24hr snacks"], price:899,
@@ -568,15 +567,6 @@
     inertia:{name:"Inertia Tours", url:"https://www.inertiatours.com/", cancun:true, from:"From ~$349 · low deposit",
       blurb:"18+ college packages built around live artist concerts, with low deposit requirements.",
       tags:["Live concerts","18+"], dest:"Cancún, Cabo, South Padre, Panama City Beach"},
-    studentescape:{name:"StudentEscape", url:"https://studentescape.com/", cancun:false, from:"0% interest payment plans",
-      blurb:"Beach party packages with 24-hour on-site concierge and the Maniac Card for club entry and perks.",
-      tags:["24hr concierge","Club card"], dest:"Panama City Beach, Fort Lauderdale, South Padre, Bahamas"},
-    ef:{name:"EF Ultimate Break", url:"https://www.efultimatebreak.com/trip-collections/spring-break-trips", cancun:false, from:"Interest-free payment plans",
-      blurb:"Culture and adventure group trips for ages 18–24 — less party, more exploring.",
-      tags:["Ages 18–24","Adventure"], dest:"Iceland, Costa Rica, Europe and more"},
-    istours:{name:"ISTours", url:"https://istours.com/home-page/our-programs/ist-springbreak/", cancun:false, from:"See site for pricing",
-      blurb:"IST Spring Break, from a student tour company running trips since 1976.",
-      tags:["Since 1976","Student travel"], dest:"Hawaii, Puerto Rico, Bahamas, Cabo"},
   };
   const opIds = Object.keys(operators);
   const cancunBadge = c => c===true ? '<span class="tag hot">Cancún ✓</span>'
@@ -622,7 +612,7 @@
     excursions:"What are the best excursions in Cancún for spring break 2027? Rank the spring break party cruise, Isla Mujeres catamaran, Chichén Itzá, Xel-Há, Xplor zip lines/ATVs, Tulum and cenote tours by fun, price and how hungover-friendly they are.",
     compare:"Compare the top Cancún spring break 2027 hotels — Grand Oasis, The Pyramid, Hotel Riu Cancún, Riu Caribe, Krystal, Aloft, Riu Dunamar, Oasis Palm, Riu Palace Las Américas and Hyatt Ziva — by price, party level, location and food.",
     opVsDirect:"For Cancún spring break 2027, should my group book through a student tour operator (like StudentCity, STS Travel or Inertia Tours) or book the hotel directly? Compare total cost, transfers, events, group payments, age rules and cancellation flexibility.",
-    opCompare:"Compare StudentCity, STS Travel, Inertia Tours, StudentEscape, EF Ultimate Break and ISTours for a Cancún spring break 2027 trip (note which ones actually offer Cancún): hotel options, deposits, payment plans, party pass/events, on-site staff and reviews. Which is best for my group?",
+    opCompare:"Compare StudentCity, STS Travel and Inertia Tours for a Cancún spring break 2027 trip: hotel options, deposits, payment plans, party pass/events, on-site staff and reviews. Which is best for my group?",
   };
   const opNames = h => Object.keys(h.ops).map(id => operators[id].name);
   const hotelPrompt = h => {
